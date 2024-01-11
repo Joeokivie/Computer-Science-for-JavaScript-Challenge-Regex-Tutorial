@@ -14,8 +14,8 @@ router.route('/').get(getThoughts).post(createThought);
 
 
 router
-.router('/')
-.get(getAllThought)
+.route('/')
+.get(getThoughts)
 .post(createThought);
 
 // /api/courses/:courseId
@@ -24,11 +24,10 @@ router
   .get(getSingleThought)
   .put(updateThought)
   .delete(deleteThought);
-  router.route('/:thoughtid/reactions').add(reaction)
-
-  router
-  .route('/:thoughtid/reactions')
-  .post(createReaction);
+  router.route('/:thoughtid/reactions').post(addReaction)
+  
+  router.route('/:thoughtid/reactions/:thoughtId').delete(removeReaction)
+  
 
 
 module.exports = router;

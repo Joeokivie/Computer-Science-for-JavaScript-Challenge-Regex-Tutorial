@@ -1,7 +1,7 @@
 const { ObjectId } = require('mongoose').Types;
 const { Student, Course } = require('../models');
 
-const thoughtController = {
+module.exports = {
   // get all thoughts
   async getThoughts(req, res) {
     try {

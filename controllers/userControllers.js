@@ -1,12 +1,15 @@
 const { User, Thought } = require('../models');
 
 module.exports = {
-  getAllUser(req, res) {
-    User.find()
-      .then((users) => res.json(users))
-      .catch((err) => res.status(500).json(err));
-  },
-  
+  async getAllUser(req, res) {
+    try {
+      const users = await User.find()
+      res.json(users)
+    }
+    catch(err) {
+      res.status(500).json(err);
+    }
+},
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId })
       .select('-__v')
